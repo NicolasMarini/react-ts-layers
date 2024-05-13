@@ -1,5 +1,4 @@
-import axios from "axios";
-import { ApiClient, PostAPIError } from "../models/ApiClient";
+import { ApiClient } from "../models/ApiClient";
 import { PostModel } from "../models/PostModel";
 import { POSTS, POST_DETAIL } from "../properties";
 import { Repository } from "./Repository";

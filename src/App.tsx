@@ -5,7 +5,6 @@ import PostDetail from "./components/PostDetail";
 import Posts from "./components/Posts";
 import { ServiceProvider } from "./contexts/ServiceContext";
 import { RoutePath } from "./routes";
-import axios from "axios";
 
 const PostRoutes = () => (
   <Routes>

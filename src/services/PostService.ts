@@ -1,4 +1,3 @@
-import { NewPost } from "../hooks/usePost";
 import { PostModel } from "../models/PostModel";
 import { PostRepository } from "../repositories/PostRepository";
 import { Service } from "./Service";

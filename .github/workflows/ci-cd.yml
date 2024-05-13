@@ -1,0 +1,32 @@
+name: react-ts-layers
+on: push
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.14.2
+      - run: npm install
+      - run: npm test
+
+  typescript-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.14.2
+      - run: npm install
+      - run: npm run tsc:validate
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.14.2
+      - run: npm install
+      - run: npm run lint

@@ -1,25 +1,29 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { usePost } from "../hooks/usePost";
+import { PostModel } from "../models/PostModel";
 
 const PostDetail = () => {
-  const { post, getPostById, loading } = usePost();
+  const { postDetail, getPostDetail, loadloadingPostDetail, postDetailError } =
+    usePost();
   const params = useParams();
   const postId = Number(params.postId);
 
   useEffect(() => {
-    getPostById(postId);
+    getPostDetail(postId);
   }, [postId]);
 
-  if (loading) {
+  if (loadloadingPostDetail) {
     return <span>Loading...</span>;
   }
+
+  console.log("postDetail:: ", postDetail);
 
   return (
     <div>
       <h1>Post Detail</h1>
-      <p>{post?.getTitle()}</p>
-      <p>{post?.getBody()}</p>
+      <p>{postDetail && (postDetail as PostModel).getTitle()}</p>
+      <p>{postDetail && (postDetail as PostModel).getBody()}</p>
     </div>
   );
 };

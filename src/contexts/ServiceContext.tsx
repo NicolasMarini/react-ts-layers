@@ -1,13 +1,11 @@
 import React, { createContext, useContext } from "react";
-import { PostService } from "../services/PostService";
-import { PostRepository } from "../repositories/PostRepository";
 import { ApiClient } from "../models/ApiClient";
 import { HOST } from "../properties";
-import { PostModel } from "../models/PostModel";
+import { PostRepository } from "../repositories/PostRepository";
+import { PostService } from "../services/PostService";
 
 interface ServiceContextType {
   postService: PostService;
-  // postRepository: PostRepository;
 }
 
 const ServiceContext = createContext<ServiceContextType | null>(null);

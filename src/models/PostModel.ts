@@ -1,17 +1,10 @@
-import { NewPost } from "../hooks/usePost";
-
 export class PostModel {
-  private id: number | undefined;
+  private id: number;
   private userId: number;
   private title: string;
   private body: string;
 
-  constructor(
-    id: number | undefined,
-    userId: number,
-    title: string,
-    body: string
-  ) {
+  constructor(id: number, userId: number, title: string, body: string) {
     this.id = id;
     this.userId = userId;
     this.title = title;
@@ -22,7 +15,7 @@ export class PostModel {
   //     return { userId: item.userId, title: item.title, body: item.body };
   //   }
 
-  public getId(): number | undefined {
+  public getId(): number {
     return this.id;
   }
 

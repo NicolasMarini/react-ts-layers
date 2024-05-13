@@ -4,13 +4,15 @@ import { PostModel } from "../models/PostModel";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({
+  key,
   id,
   title,
   body,
 }: {
   title: string;
   body: string;
-  id?: number;
+  id: number;
+  key: number;
 }) => {
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const Card = ({
         padding: 24,
         cursor: "pointer",
       }}
-      key={id}
+      key={key}
       onClick={() => navigate(`/posts/${id}`)}
     >
       <h2>{title}</h2>
@@ -55,16 +57,23 @@ const Posts = () => {
       <h1>Posts</h1>
 
       <button
-        onClick={(): Promise<PostModel | Error> =>
+        onClick={(): Promise<void | Error> =>
           createPost({ userId: 1, title: "foo", body: "bar" })
         }
       >
         Create Post
       </button>
 
-      {posts.map((post) => (
-        <Card id={post.getId()} title={post.getTitle()} body={post.getBody()} />
-      ))}
+      {Array.isArray(posts) &&
+        posts &&
+        posts.map((post: PostModel) => (
+          <Card
+            key={post.getId()}
+            id={post.getId()}
+            title={post.getTitle()}
+            body={post.getBody()}
+          />
+        ))}
     </div>
   );
 };
