@@ -2,4 +2,22 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+import { setupServer } from "msw/node";
+import { handlers } from "./mocks/handlers";
+// import "@mswjs/interceptors";
+
+// global.TextEncoder = TextEncoder;
+// // @ts-expect-error
+// global.TextDecoder = TextDecoder;
+
+// Create and start a new MSW server with your request handlers.
+const server = setupServer(...handlers);
+
+// Before running your tests, start the server.
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+// After your tests, clean up by stopping the server.
+afterAll(() => server.close());
